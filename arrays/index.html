@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 1. **Sum of All Numbers in an Array**
+        const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let sum = 0;
+        for (let i = 0; i < myArray.length; i++) {
+            sum += myArray[i];
+        }
+        console.log("1) : sum = " + sum);
+        console.log("1) : sum = " + myArray.reduce((acc, cur) => acc + cur, 0));
+
+        // 2. **Remove Duplicates from an Array**
+        const myArray2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const uniqueArray = [];
+        for (let i = 0; i < myArray2.length; i++) {
+            if (uniqueArray.indexOf(myArray2[i]) === -1) {
+                uniqueArray.push(myArray2[i]);
+            }
+        }
+        console.log("2) : uniqueArray = " + uniqueArray);
+        console.log("2) : uniqueArray = " + [...new Set(myArray2)]);
+
+        // 3. **Find the Maximum Number in an Array**
+        const myArray3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let max = myArray3[0];
+        for (let i = 1; i < myArray3.length; i++) {
+            if (myArray3[i] > max) {
+                max = myArray3[i];
+            }
+        }
+        console.log("3) : max = " + max);
+        console.log("3) : max = " + Math.max(...myArray3));
+
+        // 4. **Sort an Array of Strings Alphabetically**
+        const myArray4 = ["banana", "apple", "orange", "mango"];
+        for (let i = 0; i < myArray4.length; i++) {
+            for (let j = i + 1; j < myArray4.length; j++) {
+                if (myArray4[i] > myArray4[j]) {
+                    const temp = myArray4[i];
+                    myArray4[i] = myArray4[j];
+                    myArray4[j] = temp;
+                }
+            }
+        }
+        console.log("4) : myArray4 = " + myArray4);
+        console.log("4) : myArray4 = " + myArray4.sort());
+
+        // 5. **Find the Index of a Specific Element in an Array**
+        const myArray5 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const element = 5;
+        let index = -1;
+        for (let i = 0; i < myArray5.length; i++) {
+            if (myArray5[i] === element) {
+                index = i;
+                break;
+            }
+        }
+        console.log("5) : index = " + index);
+        console.log("5) : index = " + myArray5.indexOf(element));
+
+        // 6. **Average of All Numbers in an Array**
+        const myArray6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let average = 0;
+        for (let i = 0; i < myArray6.length; i++) {
+            average += myArray6[i];
+        }
+        average /= myArray6.length;
+        console.log("6) : average = " + average);
+        console.log("6) : average = " + myArray6.reduce((acc, cur) => acc + cur, 0) / myArray6.length);
+
+        // 7. **Merge Two Arrays and Remove Duplicates**
+        const myArray7 = [1, 2, 3, 4, 5];
+        const myArray8 = [4, 5, 6, 7, 8];
+        const mergedArray = [];
+        for (let i = 0; i < myArray7.length; i++) {
+            mergedArray.push(myArray7[i]);
+        }
+        for (let i = 0; i < myArray8.length; i++) {
+            mergedArray.push(myArray8[i]);
+        }
+        const uniqueMergedArray = [];
+        for (let i = 0; i < mergedArray.length; i++) {
+            if (uniqueMergedArray.indexOf(mergedArray[i]) === -1) {
+                uniqueMergedArray.push(mergedArray[i]);
+            }
+        }
+        console.log("7) : uniqueMergedArray = " + uniqueMergedArray);
+        console.log("7) : uniqueMergedArray = " + [...new Set(mergedArray)]);
+
+        // 8. **Check if All Elements in an Array are Even**
+        const myArray9 = [2, 4, 6, 8, 10];
+        let allEven = true;
+        for (let i = 0; i < myArray9.length; i++) {
+            if (myArray9[i] % 2 !== 0) {
+                allEven = false;
+                break;
+            }
+        }
+        console.log("8) : allEven = " + allEven);
+        console.log("8) : allEven = " + myArray9.every((element) => element % 2 === 0));
+
+        // 9. **Count the Occurrences of Each Element in an Array**
+        const myArray10 = [1, 2, 3, 4, 5, 1, 2, 3, 1, 2];
+        const occurrences = {};
+        for (let i = 0; i < myArray10.length; i++) {
+            if (occurrences[myArray10[i]] === undefined) {
+                occurrences[myArray10[i]] = 1;
+            } else {
+                occurrences[myArray10[i]]++;
+            }
+        }
+        console.log("9) : occurrences = " + JSON.stringify(occurrences));
+        console.log("9) : occurrences = " + myArray10.reduce((acc, cur) => {
+            acc[cur] = (acc[cur] || 0) + 1;
+            return acc;
+        }, {}));
+
+        // 10. **Flatten a Nested Array**
+        const myArray11 = [1, [2, [3, [4, 5]]], 6, [7, 8]];
+        const flattenedArray = [];
+        for (let i = 0; i < myArray11.length; i++) {
+            if (Array.isArray(myArray11[i])) {
+                for (let j = 0; j < myArray11[i].length; j++) {
+                    if (Array.isArray(myArray11[i][j])) {
+                        for (let k = 0; k < myArray11[i][j].length; k++) {
+                            flattenedArray.push(myArray11[i][j][k]);
+                        }
+                    } else {
+                        flattenedArray.push(myArray11[i][j]);
+                    }
+                }
+            } else {
+                flattenedArray.push(myArray11[i]);
+            }
+        }
+        console.log("10) : flattenedArray = " + flattenedArray);
+        console.log("10) : flattenedArray = " + myArray11.flat(Infinity));
+    </script>
+</body>
+
+</html>
